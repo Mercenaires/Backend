@@ -5,6 +5,8 @@ package org.example;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class AppTest {
