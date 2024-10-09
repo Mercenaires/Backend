@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:3.3.3'
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.3'
     testImplementation libs.junit
     testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.3'
 }
