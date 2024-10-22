@@ -7,11 +7,18 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.0'
 }
 
-group = 'fr.parisnanterre.Mercenaires'  // Group ID
+group = 'org.example'
+version = '1.0.0'
+sourceCompatibility = '17'
+/*group = 'fr.parisnanterre.Mercenaires'  // Group ID
 version = '0.0.1'  // Version
+*/
+
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -19,10 +26,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:3.3.3'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
 
-    testImplementation libs.junit
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.3'
+test {
+    useJUnitPlatform()
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
