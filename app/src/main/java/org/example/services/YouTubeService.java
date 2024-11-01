@@ -29,6 +29,7 @@ public class YouTubeService {
                 .queryParam("key", API_KEY)
                 .toUriString();
 
+<<<<<<< HEAD
         // Faire la requête à l'API YouTube
         YouTubeResponse response = restTemplate.getForObject(url, YouTubeResponse.class);
 
@@ -40,3 +41,7 @@ public class YouTubeService {
 
     }
 }
+=======
+    }
+}
+>>>>>>> 7232de910d3c88ea1646b7f756d1b91b18168518
