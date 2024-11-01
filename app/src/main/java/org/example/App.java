@@ -5,10 +5,15 @@ package org.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.example.models.GameMBTIScraper;
+
 
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
+        String url = "https://personality-index.com/sub-category/video-game-series-w-ecf61248-e65f-4b26-b8db-9ab8925249eb";
+        GameMBTIScraper scraper = new GameMBTIScraper();
+        scraper.scrapeToCsv(url);
         SpringApplication.run(App.class, args);
     }
 }

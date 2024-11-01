@@ -9,6 +9,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.3.3'
     id 'io.spring.dependency-management' version '1.1.0'
+
 }
 
 group = 'org.example'
@@ -23,8 +24,6 @@ repositories {
 dependencies {
     // Spring Boot Web Starter pour créer des applications web et des APIs REST
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    
-    // Spring Boot Starter Test pour les tests unitaires et d'intégration
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     
     // Si tu préfères utiliser WebClient (en option)
