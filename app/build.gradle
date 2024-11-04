@@ -25,6 +25,8 @@ dependencies {
     // Spring Boot Web Starter pour créer des applications web et des APIs REST
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.10.0'  // Remplace par la dernière version si nécessaire
+
     
     // Si tu préfères utiliser WebClient (en option)
     // implementation 'org.springframework.boot:spring-boot-starter-webflux'

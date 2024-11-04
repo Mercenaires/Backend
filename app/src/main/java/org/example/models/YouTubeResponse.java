@@ -14,7 +14,16 @@ public class YouTubeResponse {
     }
 
     public static class Item {
+        private Id id;
         private Snippet snippet;
+
+        public Id getId() {
+            return id;
+        }
+
+        public void setId(Id id) {
+            this.id = id;
+        }
 
         public Snippet getSnippet() {
             return snippet;
@@ -22,6 +31,18 @@ public class YouTubeResponse {
 
         public void setSnippet(Snippet snippet) {
             this.snippet = snippet;
+        }
+    }
+
+    public static class Id {
+        private String videoId;
+
+        public String getVideoId() {
+            return videoId;
+        }
+
+        public void setVideoId(String videoId) {
+            this.videoId = videoId;
         }
     }
 

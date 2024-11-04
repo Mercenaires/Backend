@@ -1,5 +1,6 @@
 package org.example.controllers;
 
+import org.example.models.VideoResult;
 import org.example.services.YouTubeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,7 @@ public class YouTubeController {
     private YouTubeService youTubeService;
 
     @GetMapping("/search-videos")
-    public List<String> searchVideos(@RequestParam String gameName) {
+    public List<VideoResult> searchVideos(@RequestParam String gameName) {
         return youTubeService.searchTopVideos(gameName);
     }
 }
