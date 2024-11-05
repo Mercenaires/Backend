@@ -1,0 +1,37 @@
+@startuml
+
+package "org.example.models" {
+    class GameMBTIScraper {
+        + scrapeToCsv(url: String): void
+    }
+
+    GameMBTIScraper --> "1" WebDriver : utilise
+    GameMBTIScraper --> "1" WebDriverWait : utilise
+    GameMBTIScraper --> "1..*" WebElement : utilise
+    GameMBTIScraper --> FileWriter : utilise pour écrire dans le CSV
+}
+
+' Librairies utilisées
+class WebDriver {
+    + get(url: String): void
+    + quit(): void
+}
+
+class WebDriverWait {
+    + until(condition: ExpectedConditions): void
+}
+
+class WebElement {
+    + findElement(By): WebElement
+    + getText(): String
+}
+
+class ExpectedConditions {
+    + visibilityOfElementLocated(By): ExpectedCondition
+}
+
+class FileWriter {
+    + append(data: String): FileWriter
+}
+
+@enduml
