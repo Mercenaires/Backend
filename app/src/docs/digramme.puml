@@ -1,0 +1,67 @@
+@startuml
+
+package "org.example.controllers" {
+    class HelloController {
+        +sayHello(): String
+    }
+
+    class YouTubeController {
+        - youTubeService: YouTubeService
+        +searchVideos(gameName: String): List<VideoResult>
+    }
+}
+
+package "org.example.models" {
+    class VideoResult {
+        - title: String
+        - embedUrl: String
+        + VideoResult(title: String, embedUrl: String)
+        + getTitle(): String
+        + getEmbedUrl(): String
+    }
+
+    class YouTubeResponse {
+        - items: List<Item>
+        + getItems(): List<Item>
+        + setItems(items: List<Item>)
+    }
+
+    class Item {
+        - id: Id
+        - snippet: Snippet
+        + getId(): Id
+        + setId(id: Id)
+        + getSnippet(): Snippet
+        + setSnippet(snippet: Snippet)
+    }
+
+    class Id {
+        - videoId: String
+        + getVideoId(): String
+        + setVideoId(videoId: String)
+    }
+
+    class Snippet {
+        - title: String
+        + getTitle(): String
+        + setTitle(title: String)
+    }
+}
+
+package "org.example.services" {
+    class YouTubeService {
+        - API_KEY: String
+        - YOUTUBE_API_URL: String
+        + searchTopVideos(query: String): List<VideoResult>
+    }
+}
+
+HelloController --> YouTubeService : inject
+YouTubeController --> YouTubeService : inject
+YouTubeController --> VideoResult : return
+YouTubeService --> YouTubeResponse : use
+YouTubeResponse "1" *-- "0..*" Item : composition
+Item "1" *-- "1" Id : aggregation
+Item "1" *-- "1" Snippet : aggregation
+
+@enduml
