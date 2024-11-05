@@ -16,6 +16,6 @@
 - MBTI : Permet de corréler le profil à son type de personnalité. Une fois cela fait il faudra décrire textuellement quel jeu sont adaptés à son profil MBTI
 
 == Architecture pour la Feature Recherche :
-plantuml::digramme.puml[svg]
+plantuml::model/digramme.puml[svg]
 
 == Architecture pour la Feature MBTI :
