@@ -1,26 +1,30 @@
 package org.example.services;
 
-import org.example.models.YouTubeResponse;
 import org.example.models.VideoResult;
+import org.example.models.YouTubeResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class YouTubeService {
 
-    private static final String API_KEY = "AIzaSyDnqJneEZ7oj8-vXgceE3nGKVxkt2a-wWI"; // Remplace par ta clé API
-    private static final String YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search";
+    private final String API_KEY = "YOUR_API_KEY"; // Remplacez par votre clé API YouTube
+    private final String YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search";
+    private final RestTemplate restTemplate;
 
-    public List<VideoResult> searchTopVideos(String query) {
-        RestTemplate restTemplate = new RestTemplate();
+    // Injection de RestTemplate via le constructeur
+    public YouTubeService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
+    public List<VideoResult> searchTopGameplayVideos(String gameName) {
         String url = UriComponentsBuilder.fromHttpUrl(YOUTUBE_API_URL)
                 .queryParam("part", "snippet")
-                .queryParam("q", query)
+                .queryParam("q", gameName + " gameplay")
                 .queryParam("type", "video")
                 .queryParam("maxResults", 50)
                 .queryParam("order", "viewCount")
@@ -29,15 +33,20 @@ public class YouTubeService {
 
         YouTubeResponse response = restTemplate.getForObject(url, YouTubeResponse.class);
 
-        return response.getItems().stream()
-                .limit(3)
-                .map(video -> {
-                    String videoId = video.getId().getVideoId();
-                    String title = video.getSnippet().getTitle();
-                    String embedUrl = "https://www.youtube.com/embed/" + videoId;
+        List<VideoResult> gameplayVideos = new ArrayList<>();
+        if (response != null && response.getItems() != null) {
+            response.getItems().stream()
+                    .filter(item -> {
+                        String title = item.getSnippet().getTitle().toLowerCase();
+                        return !title.contains("trailer") && !title.contains("teaser");
+                    })
+                    .limit(3)
+                    .forEach(item -> gameplayVideos.add(
+                            new VideoResult(
+                                    item.getSnippet().getTitle(),
+                                    "https://www.youtube.com/embed/" + item.getId().getVideoId())));
+        }
 
-                    return new VideoResult(title, embedUrl);
-                })
-                .collect(Collectors.toList());
+        return gameplayVideos;
     }
 }

@@ -3,20 +3,23 @@ package org.example.controllers;
 import org.example.models.VideoResult;
 import org.example.services.YouTubeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class YouTubeController {
 
+    private final YouTubeService youTubeService;
+
     @Autowired
-    private YouTubeService youTubeService;
+    public YouTubeController(YouTubeService youTubeService) {
+        this.youTubeService = youTubeService;
+    }
 
     @GetMapping("/search-videos")
     public List<VideoResult> searchVideos(@RequestParam String gameName) {
-        return youTubeService.searchTopVideos(gameName);
+        return youTubeService.searchTopGameplayVideos(gameName);
     }
 }
