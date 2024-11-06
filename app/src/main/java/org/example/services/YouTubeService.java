@@ -6,33 +6,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class YouTubeService {
 
-    private final String API_KEY = "AIzaSyDnqJneEZ7oj8-vXgceE3nGKVxkt2a-wWI"; // Remplace par ta clé API YouTube
+    private final String API_KEY = "AIzaSyDnqJneEZ7oj8-vXgceE3nGKVxkt2a-wWI"; // Remplacez par votre clé API YouTube
     private final String YOUTUBE_API_URL = "https://www.googleapis.com/youtube/v3/search";
+    private final RestTemplate restTemplate;
 
-    public List<VideoResult> searchTopVideos(String query) {
-        RestTemplate restTemplate = new RestTemplate();
+    // Injection de RestTemplate via le constructeur
+    public YouTubeService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
+    public List<VideoResult> searchTopVideos(String gameName) {
         String url = UriComponentsBuilder.fromHttpUrl(YOUTUBE_API_URL)
                 .queryParam("part", "snippet")
-                .queryParam("q", query)
+                .queryParam("q", gameName)
                 .queryParam("type", "video")
-                .queryParam("maxResults", 3)
-                .queryParam("order", "viewCount")
+                .queryParam("maxResults", 3) // Limite à trois vidéos
+                .queryParam("order", "relevance")
                 .queryParam("key", API_KEY)
                 .toUriString();
 
         YouTubeResponse response = restTemplate.getForObject(url, YouTubeResponse.class);
 
-        return response.getItems().stream()
-                .map(item -> new VideoResult(
-                        item.getSnippet().getTitle(),
-                        "https://www.youtube.com/embed/" + item.getId().getVideoId()))
-                .collect(Collectors.toList());
+        List<VideoResult> videos = new ArrayList<>();
+        if (response != null && response.getItems() != null) {
+            response.getItems().forEach(item -> videos.add(
+                    new VideoResult(
+                            item.getSnippet().getTitle(),
+                            "https://www.youtube.com/embed/" + item.getId().getVideoId())));
+        }
+
+        return videos;
     }
 }
