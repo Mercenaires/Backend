@@ -1,5 +1,7 @@
 # README
 
+[![Java CI with Gradle](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml)
+
 ````markdown
 # Projet MBTI Gaming - Backend et Frontend
 
