@@ -1,42 +1,71 @@
 package org.example.controllersT;
 
-import org.example.App;
 import org.example.models.VideoResult;
+import org.example.services.YouTubeService;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.util.List;
 
-@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@SpringBootTest
+@AutoConfigureMockMvc
 public class YouTubeControllerTest {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private MockMvc mockMvc;
 
-    @LocalServerPort
-    private int port;
+    @MockBean
+    private YouTubeService youTubeService;
 
     @Test
-    public void contextLoads() {
-        String gameName = "Sonic";
-        String url = "http://localhost:" + port + "/search-videos?gameName=" + gameName;
+    public void testSearchVideos() throws Exception {
+        // Mock the service response
+        Mockito.when(youTubeService.searchTopVideos("GameName"))
+                .thenReturn(List.of(new VideoResult("Title1", "https://www.youtube.com/embed/video1")));
 
-        // Envoyer une requête GET au contrôleur
-        ResponseEntity<VideoResult[]> response = restTemplate.getForEntity(url, VideoResult[].class);
+        // Execute the test
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/search-videos")
+                .param("gameName", "GameName")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].title").value("Title1"))
+                .andExpect(jsonPath("$[0].videoUrl").value("https://www.youtube.com/embed/video1"));
+    }
 
-        // Vérifier que le statut HTTP est 200 (OK)
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    @Test
+    public void testSearchVideosNoResults() throws Exception {
+        // Mock the service response
+        Mockito.when(youTubeService.searchTopVideos("UnknownGame"))
+                .thenReturn(List.of());
 
-        // Vérifier que le contenu de la réponse contient des vidéos (optionnel)
-        VideoResult[] videos = response.getBody();
-        assertThat(videos).isNotNull();
-        assertThat(videos.length).isGreaterThan(0);
+        // Execute the test
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/search-videos")
+                .param("gameName", "UnknownGame")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isEmpty());
+    }
+
+    @Test
+    public void testSearchVideosServiceError() throws Exception {
+        // Mock the service to throw an exception
+        Mockito.when(youTubeService.searchTopVideos("ErrorGame"))
+                .thenThrow(new RuntimeException("Service error"));
+
+        // Execute the test
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/search-videos")
+                .param("gameName", "ErrorGame")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().string("Erreur lors de la récupération des vidéos."));
     }
 }
