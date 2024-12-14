@@ -1,7 +1,6 @@
 package org.example.models;
 
 public class VideoResult {
-
     private String title;
     private String videoUrl;
 
