@@ -31,6 +31,10 @@ java {
     }
 }
 
+jacoco {
+    toolVersion = "0.8.10"
+}
+
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport // Générez le rapport Jacoco après les tests

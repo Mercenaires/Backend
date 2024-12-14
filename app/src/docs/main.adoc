@@ -1,0 +1,31 @@
+= MBT In Game
+
+== Teams :
+- Chems-eddine HOUIDI
+- Ephraim KABANGU
+- Julien KA
+- Jeff BALBERAN
+
+== Objectifs de l'application :
+
+L'objectif est d'aider un consommateur de jeux vidéo à mieux se repérer dans l'industrie en lui donnant des outils pour mieux cerner le marché
+
+=== Voici nos 2 nouvelles grosses créatures :
+
+- Une barre de recherche qui va chercher dans la base de données RAWG grâce à son API pour trouver la note d'un jeu
+- Ajout d'une section pour chaque jeu dans le menu MBTI avec la base de données RAWG, dans laquelle on peut voir une image de promotion, un descriptif, la configuration nécessaire et 2 bandes-annonces
+
+=== Voici nos 2 nouvelles petite créatures :
+
+- Ajout de 2 modes visuels, clair et sombre que l'on peut changer avec une icône en haut à droite
+- Ajout d'une barre de recherche pour une navigation rapide dans la section MBTI
+
+=== Voici quelques améliorations :
+
+- Amélioration du menu de choix de personnalité dans la section MBTI
+
+== Architecture pour la Feature pour avoir la note d'un jeu :
+plantuml::model/digramme.puml[svg]
+
+== Architecture pour la Feature MBTI :
+plantuml::model/diagrammeMBTI.puml[svg]
