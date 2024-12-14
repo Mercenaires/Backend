@@ -4,7 +4,7 @@
 
 [![Build](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml)
 
-[![codecov](https://codecov.io/gh/Chems2003/Backend/branch/main/graph/badge.svg?token=0737d776-3c09-49bc-85f6-01544e89e9a1)](https://codecov.io/gh/Chems2003/Backend)
+[![codecov](https://codecov.io/gh/Mercenaires/Backend/branch/main/graph/badge.svg?token=23f438f8-63b5-44a9-af5c-38491feef254)](https://codecov.io/gh/Mercenaires/Backend)
 
 
 
