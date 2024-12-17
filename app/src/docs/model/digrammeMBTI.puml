@@ -1,0 +1,21 @@
+@startuml
+
+package "org.example.models" {
+    class GameMBTIScraper {
+        + scrapeToCsv(url: String): void
+    }
+
+    GameMBTIScraper --> "1" WebDriver : utilise
+    GameMBTIScraper --> "1" WebDriverWait : utilise
+    GameMBTIScraper --> "1..*" WebElement : utilise
+    GameMBTIScraper --> FileWriter : écrit dans
+}
+
+
+
+' Relation supplémentaire pour plus de clarté
+WebDriver ..> WebDriverWait : instancie
+WebElement ..> ExpectedConditions : vérifie avec
+WebDriver ..> WebElement : manipule
+
+@enduml

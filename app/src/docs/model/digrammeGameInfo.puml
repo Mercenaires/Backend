@@ -1,0 +1,40 @@
+@startuml
+
+' Définition des classes
+class GameInfo {
+  - gameDetails: Object
+  - youtubeVideos: Array
+  - error: String
+  - rawgApiKey: String
+  + fetchGameDetails(): void
+  + useEffect(): void
+  + render(): JSX
+}
+
+class MBTIPage {
+  - groupedGames: Object
+  - filteredGames: Array
+  - searchTerm: String
+  - gamesWithImages: Array
+  - RAWG_API_KEY: String
+  - RAWG_BASE_URL: String
+  + handleSearch(event): void
+  + fetchGameImages(games): Promise<Array>
+  + useEffect(): void
+  + render(): JSX
+}
+
+class Navbar {
+  - theme: String
+  + setTheme(newTheme: String): void
+  + useEffect(): void
+  + render(): JSX
+}
+
+' Relations
+GameInfo --> "Utilise" MBTIPage : "Lien vers détails"
+MBTIPage --> "Utilise" GameInfo : "Recherche jeu"
+Navbar --> "Option de thème" GameInfo
+Navbar --> "Option de thème" MBTIPage
+
+@enduml

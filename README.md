@@ -8,6 +8,8 @@
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
+
 ````markdown
 # Projet MBTI Gaming - Backend et Frontend
 
