@@ -1,24 +1,16 @@
 # README
 
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![Build](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml)
 
-<<<<<<< HEAD
-=======
 [![codecov](https://codecov.io/gh/Mercenaires/Backend/branch/main/graph/badge.svg?token=0737d776-3c09-49bc-85f6-01544e89e9a1)](https://app.codecov.io/gh/Mercenaires/Backend/tree/init_develop)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
->>>>>>> develop
 
 
-````markdown
 # Projet MBTI Gaming - Backend et Frontend
 
 Ce guide vous expliquera comment lancer le backend (API) et le frontend (interface utilisateur) de ce projet.
