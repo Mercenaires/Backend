@@ -1,6 +1,6 @@
 # README
 
-<<<<<<< HEAD
+
 =======
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -12,7 +12,7 @@
 
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
 
->>>>>>> init_develop
+
 ````markdown
 # Projet MBTI Gaming - Backend et Frontend
 
