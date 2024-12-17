@@ -11,6 +11,10 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
 
 
+Il semble y avoir plusieurs petites erreurs dans le markdown que vous avez fourni, principalement liées à la mise en forme du code et à la duplication de certaines sections. Voici la version corrigée :
+
+---
+
 # Projet MBTI Gaming - Backend et Frontend
 
 Ce guide vous expliquera comment lancer le backend (API) et le frontend (interface utilisateur) de ce projet.
@@ -36,13 +40,11 @@ Le backend est la partie de l'application qui gère la logique, les données, et
    ```bash
    git clone https://github.com/Mercenaires/Backend.git
    ```
-````
 
-1. **Déplacez-vous dans le dossier du backend** en tapant la commande ci-dessous. Cela signifie que vous dites à votre terminal de travailler dans le dossier que vous venez de cloner.
+3. **Déplacez-vous dans le dossier du backend** en tapant la commande ci-dessous. Cela signifie que vous dites à votre terminal de travailler dans le dossier que vous venez de cloner.
 
    ```bash
    cd Backend
-
    ```
 
 ### 1.2 Installer les dépendances du Backend
@@ -51,10 +53,7 @@ Le backend est la partie de l'application qui gère la logique, les données, et
 2. **Tapez la commande suivante** pour demander à Gradle de télécharger toutes les dépendances :
 
    ```bash
-   bash
-   Copier le code
    ./gradlew build
-
    ```
 
    **Remarque :** Si vous êtes sur Windows et que cette commande ne fonctionne pas, essayez avec `gradlew.bat build`.
@@ -67,7 +66,6 @@ Une fois que toutes les dépendances sont en place, vous pouvez démarrer le bac
 
    ```bash
    ./gradlew bootRun
-
    ```
 
    - Cette commande demande à Gradle de lancer le backend en démarrant un serveur local.
@@ -83,7 +81,6 @@ Les tests permettent de vérifier que le backend fonctionne comme prévu.
 
    ```bash
    ./gradlew test
-
    ```
 
 2. **Vérifiez les résultats des tests** : Si les tests passent, vous verrez un message de réussite. Si des tests échouent, le terminal affichera des informations sur les erreurs.
@@ -100,19 +97,13 @@ Le frontend est l’interface utilisateur. C’est ce que les utilisateurs verro
 2. Tapez la commande suivante pour cloner le code source du frontend :
 
    ```bash
-   bash
-   Copier le code
    git clone https://github.com/Mercenaires/Frontend.git
-
    ```
 
 3. Déplacez-vous dans le dossier du frontend :
 
    ```bash
-   bash
-   Copier le code
    cd Frontend
-
    ```
 
 ### 2.2 Installer les dépendances du Frontend
@@ -121,10 +112,7 @@ Le frontend est l’interface utilisateur. C’est ce que les utilisateurs verro
 2. Tapez cette commande :
 
    ```bash
-   bash
-   Copier le code
    npm install
-
    ```
 
    - Cela va télécharger toutes les bibliothèques définies pour le projet dans un dossier `node_modules`.
@@ -134,10 +122,7 @@ Le frontend est l’interface utilisateur. C’est ce que les utilisateurs verro
 1. Une fois les dépendances installées, tapez la commande suivante pour lancer le frontend :
 
    ```bash
-   bash
-   Copier le code
    npm start
-
    ```
 
    - Cette commande démarre le serveur de développement de React, qui permet de voir votre interface utilisateur.
@@ -166,12 +151,14 @@ Certains services, comme **SonarCloud** pour l’analyse de code, peuvent néces
 ### Problèmes fréquents
 
 - **Port occupé** : Si un port (par exemple `8080` ou `3000`) est déjà utilisé, changez le port dans la configuration, ou terminez le processus qui utilise ce port.
-<<<<<<< HEAD
 - **Erreurs de dépendances** : Si des erreurs surviennent lors de l’installation des dépendances, vérifiez que vous avez les bonnes versions de Java et Node.js installées.
-=======
-<<<<<<< HEAD
-- **Erreurs de dépendances** : Si des erreurs surviennent lors de l’installation des dépendances, vérifiez que vous avez les bonnes versions de Java et Node.js installées.
-=======
-- **Erreurs de dépendances** : Si des erreurs surviennent lors de l’installation des dépendances, vérifiez que vous avez les bonnes versions de Java et Node.js installées.
->>>>>>> init_develop
->>>>>>> develop
+
+---
+
+### Modifications apportées :
+
+1. J'ai retiré les sections dupliquées comme "Erreurs de dépendances" répétées plusieurs fois.
+2. J'ai corrigé des erreurs dans les balises de code pour les commandes bash (par exemple, retiré les tags "bash Copier le code").
+3. La mise en forme de certains éléments a été ajustée pour plus de lisibilité.
+
+Cette version devrait maintenant être correcte et bien formatée pour un fichier markdown.
