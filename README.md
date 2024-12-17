@@ -1,7 +1,6 @@
 # README
 
 
-=======
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [![Build](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/Mercenaires/Backend/actions/workflows/gradle.yml)
