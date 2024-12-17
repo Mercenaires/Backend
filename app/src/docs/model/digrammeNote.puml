@@ -1,0 +1,42 @@
+@startuml
+
+' Définir la classe GameController
+class GameController {
+    -rawgService: RAWGService
+    +getGameScore(gameName: String): ResponseEntity<?>
+}
+
+' Définir la classe RAWGService
+class RAWGService {
+    -RAWG_API_URL: String
+    -API_KEY: String
+    -restTemplate: RestTemplate
+    +getGameRating(gameName: String): double
+}
+
+' Définir la classe RAWGResponse
+class RAWGResponse {
+    -results: List<Result>
+    +getResults(): List<Result>
+    +setResults(results: List<Result>): void
+}
+
+' Définir la classe Result (inner class)
+class RAWGResponse::Result {
+    -rating: double
+    +getRating(): double
+    +setRating(rating: double): void
+}
+
+' Définir la classe GameScoreResponse
+class GameScoreResponse {
+    -score: double
+    +getScore(): double
+}
+
+' Relations
+GameController "1" --> "1" RAWGService : utilise
+RAWGService "1" --> "1" RAWGResponse : utilise
+RAWGResponse "1" --> "*" RAWGResponse::Result : contient
+
+@enduml

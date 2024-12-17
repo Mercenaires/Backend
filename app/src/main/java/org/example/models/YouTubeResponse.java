@@ -3,7 +3,6 @@ package org.example.models;
 import java.util.List;
 
 public class YouTubeResponse {
-
     private List<Item> items;
 
     public List<Item> getItems() {
@@ -33,29 +32,29 @@ public class YouTubeResponse {
         public void setSnippet(Snippet snippet) {
             this.snippet = snippet;
         }
+    }
 
-        public static class Id {
-            private String videoId;
+    public static class Id {
+        private String videoId;
 
-            public String getVideoId() {
-                return videoId;
-            }
-
-            public void setVideoId(String videoId) {
-                this.videoId = videoId;
-            }
+        public String getVideoId() {
+            return videoId;
         }
 
-        public static class Snippet {
-            private String title;
+        public void setVideoId(String videoId) {
+            this.videoId = videoId;
+        }
+    }
 
-            public String getTitle() {
-                return title;
-            }
+    public static class Snippet {
+        private String title;
 
-            public void setTitle(String title) {
-                this.title = title;
-            }
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
     }
 }

@@ -3,12 +3,15 @@
  */
 package org.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootApplication
+@SpringBootTest
 public class AppTest {
-    public static void main(String[] args) {
-        SpringApplication.run(AppTest.class, args);
+
+    @Test
+    void contextLoads() {
+        // Ce test vérifie simplement que le contexte de l'application se charge
+        // correctement
     }
 }
