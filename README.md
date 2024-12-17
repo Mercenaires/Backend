@@ -6,7 +6,7 @@
 
 [![codecov](https://codecov.io/gh/Mercenaires/Backend/branch/init_develop/graph/badge.svg?token=0737d776-3c09-49bc-85f6-01544e89e9a1)](https://app.codecov.io/gh/Mercenaires/Backend/tree/init_develop)
 
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Mercenaires_Backend&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Mercenaires_Backend)
 
 ````markdown
 # Projet MBTI Gaming - Backend et Frontend
